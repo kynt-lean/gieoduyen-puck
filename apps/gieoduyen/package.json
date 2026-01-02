@@ -1,0 +1,27 @@
+{
+  "name": "gieoduyen",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "lucide-react": "^0.468.0",
+    "mongoose": "^9.0.2",
+    "next": "^16.0.8",
+    "rc-footer": "^0.6.8",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint-config-custom": "*",
+    "typescript": "^5.5.4"
+  }
+}

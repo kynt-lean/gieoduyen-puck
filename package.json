@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "rimraf packages/core/dist && turbo run dev --filter=gieoduyen",
+    "lint": "turbo run lint",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,css}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,css}\"",
+    "release": "npm run release:prepare && npm run changelog && npm run release-commit",
+    "release:prepare": "git fetch --tags && conventional-recommended-bump -p angular | xargs npm run version:auto $1",
+    "release:canary": "npm run release:prepare && node scripts/get-unstable-version canary | xargs npm run version:auto $1",
+    "release-commit": "git add -u && git commit -m \"release: v${npm_package_version}\"",
+    "smoke": "node scripts/e2e/smoke.mjs",
+    "test": "turbo run test",
+    "version": "lerna version --force-publish -y --no-push --no-changelog --no-git-tag-version $npm_package_version",
+    "version:auto": "npm run version --no-git-tag-version --new-version $1",
+    "changelog": "node scripts/create-changelog"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^2.3.3",
+    "asciichart": "^1.5.25",
+    "conventional-changelog-angular": "^4.0.0",
+    "conventional-recommended-bump": "^6.0.5",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "lerna": "^9.0.0",
+    "prettier": "^2.5.1",
+    "puppeteer": "^24.8.2",
+    "rimraf": "^6.1.2",
+    "standard-changelog": "^2.0.21",
+    "turbo": "^2.5.8"
+  },
+  "name": "puck-repo",
+  "packageManager": "npm@10.9.0",
+  "workspaces": [
+    "apps/*",
+    "recipes/*",
+    "packages/*"
+  ],
+  "version": "0.20.2",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "overrides": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3"
+  }
+}

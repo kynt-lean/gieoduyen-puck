@@ -1,0 +1,98 @@
+.OurStory {
+  background: var(--puck-color-grey-12);
+}
+
+.OurStory-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.OurStory-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  color: var(--puck-color-grey-02);
+}
+
+@media (min-width: 768px) {
+  .OurStory-title {
+    font-size: 48px;
+  }
+}
+
+.OurStory-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.OurStory-milestone {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.OurStory-milestoneHeader {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.OurStory-milestoneNumber {
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(255, 182, 193, 0.5);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .OurStory-milestoneNumber {
+    font-size: 72px;
+  }
+}
+
+.OurStory-milestoneTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--puck-color-grey-02);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 768px) {
+  .OurStory-milestoneTitle {
+    font-size: 32px;
+  }
+}
+
+.OurStory-milestoneDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--puck-color-grey-05);
+  margin: 0;
+}
+
+.OurStory-milestoneImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.OurStory-milestoneImageWrapper {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+}
+
+.OurStory-milestoneImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
