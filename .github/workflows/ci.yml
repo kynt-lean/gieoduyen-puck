@@ -1,12 +1,14 @@
-# This workflow will build the gieoduyen app.
+# This workflow will build the gieoduyen app manually with .env.local input.
 
 name: Build CI - gieoduyen
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      env_local_content:
+        description: 'Content for .env.local file'
+        required: true
+        type: string
 
 jobs:
   build-gieoduyen:
@@ -21,6 +23,11 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+
+      - name: Create .env.local file
+        run: |
+          echo "${{ inputs.env_local_content }}" > apps/gieoduyen/.env.local
+          echo ".env.local file created successfully"
 
       - name: Install dependencies
         run: npm install
