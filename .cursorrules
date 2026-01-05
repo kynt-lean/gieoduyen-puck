@@ -1,0 +1,74 @@
+# Puck Editor - Cursor Rules
+
+Bạn đang làm việc với Puck Editor - một visual editor mã nguồn mở cho React.js.
+
+## Cấu trúc dự án
+
+- **Monorepo** sử dụng npm run Workspaces và Turbo
+- **Core package**: `packages/core/` - chứa toàn bộ logic của editor
+- **Demo app**: `apps/demo/` - ứng dụng demo để test
+- **Docs app**: `apps/docs/` - trang documentation
+- **Recipes**: `recipes/` - các template ví dụ (Next.js, Remix, React Router)
+
+## Quy tắc quan trọng
+
+### TypeScript
+- Luôn sử dụng TypeScript strict mode
+- Tránh `any`, sử dụng `unknown` nếu cần
+- Type definitions trong `packages/core/types/`
+
+### Code Style
+- CSS: Follow SUIT CSS methodology (xem CONTRIBUTING.md)
+- Components: Functional components với hooks
+- File naming: PascalCase cho components, camelCase cho utilities
+
+### Monorepo
+- Packages có thể depend vào nhau qua workspace protocol
+- Build với Turbo để tận dụng caching
+- Sử dụng `npm run dev` để chạy demo app
+
+### Component Development
+- Components trong `packages/core/components/`
+- Mỗi component: `.tsx` file + `.css` file
+- Export từ `packages/core/index.ts` nếu là public API
+
+### Redux/State Management
+- Redux store trong `packages/core/store/`
+- Actions trong `packages/core/reducer/actions/`
+- Sử dụng Redux cho global state, `useState` cho local state
+
+## Khi thêm tính năng
+
+1. **Component mới**: Thêm vào `packages/core/components/`, update config trong `apps/demo/config/`
+2. **Plugin mới**: Tạo package mới trong `packages/`, follow pattern của plugins hiện có
+3. **Field type mới**: Định nghĩa trong `packages/core/types/`, implement trong `packages/core/components/AutoField/`
+
+## Lệnh thường dùng
+
+- `npm run dev` - Chạy demo app
+- `npm run build` - Build tất cả packages
+- `npm run lint` - Lint code
+- `npm run format` - Format code
+- `npm run test` - Run tests
+
+## Lưu ý
+
+- Core package (`packages/core/`) là quan trọng nhất, cẩn thận khi thay đổi
+- Luôn kiểm tra TypeScript types trước khi commit
+- Xem examples trong `apps/demo/` và `recipes/` để hiểu cách sử dụng
+- Documentation: https://puckeditor.com/docs
+
+## Import patterns
+
+```typescript
+// Core exports
+import { Puck, Render, Config } from "@measured/puck";
+import "@measured/puck/puck.css";
+
+// Internal
+import { Component } from "../components/Component";
+import { useStore } from "../store";
+```
+
+Xem thêm chi tiết trong `.cursor/instructions.md`, `.cursor/rules.md`, và `.cursor/quick-reference.md`.
+

@@ -1,0 +1,24 @@
+.Header {
+  background: var(--puck-color-azure-12);
+  border-bottom: 1px solid var(--puck-color-azure-11);
+}
+
+.Header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.Header-logo {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--puck-color-azure-04);
+}
+
+.Header-items {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+

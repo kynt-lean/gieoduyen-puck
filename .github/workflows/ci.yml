@@ -1,0 +1,36 @@
+# This workflow will build the gieoduyen app manually with .env.local input.
+
+name: Build CI - gieoduyen
+
+on:
+  workflow_dispatch:
+    inputs:
+      env_local_content:
+        description: 'Content for .env.local file'
+        required: true
+        type: string
+
+jobs:
+  build-gieoduyen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Create .env.local file
+        run: |
+          echo "${{ inputs.env_local_content }}" > apps/gieoduyen/.env.local
+          echo ".env.local file created successfully"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build gieoduyen app
+        run: npx turbo run build --filter=gieoduyen

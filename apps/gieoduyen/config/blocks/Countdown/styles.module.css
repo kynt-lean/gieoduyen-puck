@@ -1,0 +1,77 @@
+.Countdown {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 240, 245, 0.3),
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.Countdown-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  text-align: center;
+}
+
+.Countdown-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--puck-color-grey-02);
+}
+
+@media (min-width: 768px) {
+  .Countdown-title {
+    font-size: 48px;
+  }
+}
+
+.Countdown-timer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 800px;
+}
+
+@media (max-width: 768px) {
+  .Countdown-timer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.Countdown-timerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.Countdown-timerValue {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--puck-color-azure-04);
+}
+
+@media (min-width: 768px) {
+  .Countdown-timerValue {
+    font-size: 64px;
+  }
+}
+
+.Countdown-timerLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--puck-color-grey-05);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
